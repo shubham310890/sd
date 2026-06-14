@@ -12,7 +12,25 @@
  */
 class Solution {
 public:
-
+     /* one more solution
+     */
+     TreeNode* trimBSTHelper(TreeNode* root, int low, int high) {
+        if (root == NULL) return NULL;
+        if(root->left == NULL && root->right == NULL) {
+            if(root->val < low || root->val > high) return NULL;
+            else root;
+        }
+        root->left = trimBSTHelper(root->left, low, high);
+        root->right = trimBSTHelper(root->right, low, high);
+        if (root->val < low) return root->right;
+        else if (root->val > high) return root->left;
+        else return root;
+    }
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if (root == NULL) return NULL;
+        return trimBSTHelper(root, low, high);
+    }
+  
      TreeNode* trimBST(TreeNode* root, int L, int R) {
         if(root == NULL) return NULL;
         root->left = trimBST(root->left, L, R);
