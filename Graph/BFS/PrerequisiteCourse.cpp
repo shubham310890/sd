@@ -10,6 +10,14 @@
 5. At the end:
    - If completed courses == A, return 1.
    - Else return 0.
+
+
+A = number of courses
+P = number of prerequisite pairs
+
+time complexity: O(A + P)  Because we process every course and every prerequisite edge once.
+space complexity: O(A + P) Because we store the graph, indegree array, and queue.
+
 */
 int Solution::solve(int A, vector<int> &B, vector<int> &C) {
     vector<vector<int>> graph(A + 1);
